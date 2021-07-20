@@ -18,58 +18,53 @@ bash SGEclusterSubmit.sh
 
 ## Other useful scripts
 
-The following scripts perform various helpful tasks on the mtDNA somatic variant calls, which are summarised in files ending in "...\_summary.dat" and have the format: variant\_position , frequency (of variant in test minus control) , p-value. A description of each script and how to execute them follows.
+The following scripts perform various helpful tasks on the mtDNA somatic variant calls, which are summarised in files ending in "...summary.dat" and have the format: variant\_position , frequency (of variant in test minus control) , p-value. A description of each script and how to execute them follows.
 
-1. First sort all variant summary data files into directories for each patch & patient by executing sort\_files.sh
+1. First sort all somatic variant summary data files into directories for each patch & patient by executing sort\_files.sh
 
-	Usage:
-		bash sort_files.sh [arguments]
-	
-	Arguments:
-		Path to directory containing all SNV data output from Snakemake pipeline
+```
+bash ./sort_files.sh [path]
+```
+
+where {path} is the file path to the results/SNVs/ directory where all of the "...summary.dat" files are output by Snakemake.
 
 
 2. SNV\_checkReplicates.py; to generate a plot of variant frequencies in replicate 1 vs. replicate 2
 
-	Usage:
-		python3 SNV_checkReplicates.py [arguments]
-	
-	Arguments:
-		--replicateA	path to file with A replicate data (ending in "..._summary.dat")
-		--replicateB	path to file with B replicate data (ending in "..._summary.dat")
-		--output	path to output figure (will be appended with "..._replicate_frequencies.png")
+```
+python3 ./SNV_checkReplicates.py [--replicateA A] [--replicateB B] [--output O]
+```
+
+where\
+&nbsp;  --replicateA A &emsp;&emsp;	path to file with A replicate data (ending in "...repA...summary.dat")\
+&nbsp;  --replicateB B &emsp;&emsp;     path to file with corresponding B replicate data (ending in "...repB...summary.dat")\
+&nbsp;  --output O &emsp;&emsp;     path to output figure (will be appended with "...\_replicate\_frequencies.png")\
 
 
 3. To run the above script on a directory of files ending in "...\_summary.dat", execute the compare\_replicates.sh shell script.
 
-	Usage:
-		bash compare_replicates.sh [arguments]
-	
-	Arguments:
-		Path to directory containing "...summary.dat" files.
+```
+bash ./compare_replicates.sh [path]
+```
+
+where {path} is the file path to the directory containing "...summary.dat" files.
 
 
-4. compile\_all\_plots.py; to produce a .tex file with a page for each patient+sample containing output deepSNV scatter plot
-   for both replicate, and the replicate comparison figure produced with the SNV\_checkReplicates.py script. Requires directory
-   containing the deepSNV scatter plots for each patient+sample (files ending in "...scatterPlot.pdf"). This should be the
-   same directory as that containing the "...\_replicate\_frequencies.png" files.
+4. compile\_all\_plots.py; to produce a .tex file with a page for each patient+sample containing output deepSNV scatter plot for both replicate, and the replicate comparison figure produced with the SNV\_checkReplicates.py script. Requires directory containing the deepSNV scatter plots for each patient+sample (files ending in "...scatterPlot.pdf"). This should be the same directory as that containing the "...\_replicate\_frequencies.png" files.
 
-	Usage:
-		python3 compile_all_plots.py [arguments]
-	
-	Arguments:
-		 Path to directory containing "...scatterPlot.pdf" and "..._replicate_frequencies.png" files.
+```
+python3 ./compile_all_plots.py [path]
+```
 
-5. shared\_and\_private\_variants.py; sorts shared and private variants for each patient and summarises these in a .dat file.
+where {path} is the file path to directory containing "...scatterPlot.pdf" and "...\_replicate\_frequencies.png" files.
 
-	Usage:
-		python3 shared_and_private_variants.py [arguments]
 
-	Arguments:
-		path to file containing "..._summary.dat" data files. File path should specify the parent directory AND the generic 
-		beginning of the file name e.g. "/path_to_parent_directory/GC_EC_8466_193B"
+5. shared\_and\_private\_variants.py; sorts shared (public) and private variants for each patient and summarises these in a .dat file.
 
-	Output:
-		`{prefix}_rep1.dat`
-		`{prefix}_rep2.dat`
+```
+python3 shared_and_private_variants.py [path]
+```
+
+where {path} is the file path to the directory containing "...summary.dat" files. Must have sorted somatic calls using {./sort\_files.sh} prior to executing this script.
+
 
