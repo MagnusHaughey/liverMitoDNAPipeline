@@ -16,11 +16,10 @@ To run the full pipeline, execute
 bash SGEclusterSubmit.sh
 ```
 
+
 ## Other useful scripts
 
-To process deepSNV variant data which is outputted from the mtDNA pipeline, execute the following scripts. In the following, 
-files with filename ending in "...\_summary.dat" contain re-formatted deepSNV variant data, and the data within are arranged in
-the following format: variant\_position , frequency (of variant in test minus control) , p-value.
+The following scripts perform various helpful tasks on the mtDNA somatic variant calls, which are summarised in files ending in "...\_summary.dat" and have the format: variant\_position , frequency (of variant in test minus control) , p-value. A description of each script and how to execute them follows.
 
 1) First sort all variant summary data files into directories for each patch & patient by executing sort\_files.sh
 
