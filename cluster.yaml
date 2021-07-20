@@ -1,0 +1,57 @@
+{
+        __default__:
+        {
+                jobs: "32",
+                time: "10:00:00",
+                vmem: 8G,
+                cores: "1",
+                resources: "\"span[hosts=1]\"",
+                name: "{rule}_snakemake",
+                output: "{config[log_dir]}/{rule}/{rule}.out",
+                error: "{config[log_dir]}/{rule}/{rule}.err",
+                email: "m.j.haughey@qmul.ac.uk",
+        },
+
+
+        perform_fastqc:
+        {
+                output: "{config[log_dir]}/{rule}/{rule}.{wildcards.sample}.out",
+                error: "{config[log_dir]}/{rule}/{rule}.{wildcards.sample}.out",
+        },
+
+        
+        merge_fastq:
+        {
+                output: "{config[log_dir]}/{rule}/{rule}.{wildcards.sample}.out",
+                error: "{config[log_dir]}/{rule}/{rule}.{wildcards.sample}.out",
+        },
+
+
+        align:
+        {
+                output: "{config[log_dir]}/{rule}/{rule}.{wildcards.sample}.out",
+                error: "{config[log_dir]}/{rule}/{rule}.{wildcards.sample}.out",
+        },
+
+
+        sort_bam:
+        {
+                output: "{config[log_dir]}/{rule}/{rule}.{wildcards.sample}.out",
+                error: "{config[log_dir]}/{rule}/{rule}.{wildcards.sample}.out",
+        },
+
+
+        samtools_flagstat:
+        {
+                output: "{config[log_dir]}/{rule}/{rule}.{wildcards.sample}.out",
+                error: "{config[log_dir]}/{rule}/{rule}.{wildcards.sample}.out",
+        },
+
+
+        samtools_depth:
+        {
+                output: "{config[log_dir]}/{rule}/{rule}.{wildcards.sample}.out",
+                error: "{config[log_dir]}/{rule}/{rule}.{wildcards.sample}.out",
+        },
+
+}
