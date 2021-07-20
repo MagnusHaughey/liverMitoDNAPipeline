@@ -26,7 +26,7 @@ The following scripts perform various helpful tasks on the mtDNA somatic variant
 bash ./sort_files.sh [path]
 ```
 
-where {path} is the file path to the results/SNVs/ directory where all of the "...summary.dat" files are output by Snakemake.
+where [path] is the file path to the results/SNVs/ directory where all of the "...summary.dat" files are output by Snakemake.
 
 
 2. SNV\_checkReplicates.py; to generate a plot of variant frequencies in replicate 1 vs. replicate 2
@@ -47,7 +47,7 @@ where\
 bash ./compare_replicates.sh [path]
 ```
 
-where {path} is the file path to the directory containing "...summary.dat" files.
+where [path] is the file path to the directory containing "...summary.dat" files.
 
 
 4. compile\_all\_plots.py; to produce a .tex file with a page for each patient+sample containing output deepSNV scatter plot for both replicate, and the replicate comparison figure produced with the SNV\_checkReplicates.py script. Requires directory containing the deepSNV scatter plots for each patient+sample (files ending in "...scatterPlot.pdf"). This should be the same directory as that containing the "...\_replicate\_frequencies.png" files.
@@ -56,7 +56,7 @@ where {path} is the file path to the directory containing "...summary.dat" files
 python3 ./compile_all_plots.py [path]
 ```
 
-where {path} is the file path to directory containing "...scatterPlot.pdf" and "...\_replicate\_frequencies.png" files.
+where [path] is the file path to directory containing "...scatterPlot.pdf" and "...\_replicate\_frequencies.png" files.
 
 
 5. shared\_and\_private\_variants.py; sorts shared (public) and private variants for each patient and summarises these in a .dat file.
@@ -65,6 +65,6 @@ where {path} is the file path to directory containing "...scatterPlot.pdf" and "
 python3 shared_and_private_variants.py [path]
 ```
 
-where {path} is the file path to the directory containing "...summary.dat" files. Must have sorted somatic calls using {./sort\_files.sh} prior to executing this script.
+where [path] is the file path to the directory containing "...summary.dat" files. Must have sorted somatic calls using {./sort\_files.sh} prior to executing this script.
 
 
