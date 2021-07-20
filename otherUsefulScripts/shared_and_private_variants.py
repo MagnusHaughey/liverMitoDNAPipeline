@@ -8,8 +8,6 @@ import sys
 import os
 
 
-sys.path.append("/data/BCI-EvoCa2/magnus/liver_mtDNA/mtDNApipeline/myenv/lib/python3.8/site-packages")
-
 
 def average_double_entries(pairs):
 
@@ -177,8 +175,7 @@ for i in range(len(all_files)):
 
 #==================== Find shared (clonal) mutations
 outfile_name = all_files[0][:all_files[0].rindex('_')]
-f = open(parent_dir + "_rep1.dat" , 'w')
-#f = open(parent_dir + "_rep1_noGermline.dat" , 'w')
+f = open(parent_dir + "/publicAndPrivateSomaticVariants_rep1.dat" , 'w')
 
 f.write("\t")
 for i in range(len(sample_names)):
@@ -259,6 +256,14 @@ fig1 = f.add_subplot(111)
 # For P4L3, remove the C2 bar (since only one amplicon was successful)
 #number_of_variants[1] = 0
 
+
+out_file = parent_dir + "/somaticMutationalBurden.dat"
+with open(out_file , 'w') as file:
+	for var in number_of_variants:
+		file.write("{}\n".format(var))
+
+
+
 fig1.bar(np.linspace(1 , len(all_repA) , len(all_repA)) , number_of_variants , 
 			width = 0.6 , 
 			facecolor = 'Red' , 
@@ -276,7 +281,7 @@ plt.setp(fig1.xaxis.get_majorticklabels(), rotation=45 , ha="right")
 
 plt.tight_layout()
 
-out_fig = parent_dir + "_rep1_mutational_burden.png"
+out_fig = parent_dir + "/somaticMutationalBurden.png"
 f.savefig(out_fig , dpi=300 , format='png')
 
 plt.clf()
@@ -303,7 +308,7 @@ if (len(clonal_frequencies) > 0):
 
 	plt.legend()
 
-	out_fig = parent_dir + "_rep1_clonal_frequencies.png"
+	out_fig = parent_dir + "/publicVariantFrequencies_rep1.png"
 	plt.savefig(out_fig , dpi = 300 , format='png' , bbox_inches='tight')
 	plt.clf()
 
@@ -341,7 +346,7 @@ if (len(clonal_frequencies) > 0):
 
 		plt.legend()
 
-		out_fig = parent_dir + "_rep1_clonal_frequencies_highVAF.png"
+		out_fig = parent_dir + "/publicVariantFrequencies_rep1_highVAF.png"
 		plt.savefig(out_fig , dpi = 300 , format='png' , bbox_inches='tight')
 		plt.clf()
 
@@ -386,7 +391,7 @@ if (len(clonal_frequencies) > 0):
 
 		plt.legend()
 
-		out_fig = parent_dir + "_rep1_clonal_frequencies_lowVAF.png"
+		out_fig = parent_dir + "/publicVariantFrequencies_rep1_lowVAF.png"
 		plt.savefig(out_fig , dpi = 300 , format='png' , bbox_inches='tight')
 		plt.clf()
 
@@ -405,7 +410,7 @@ if (len(clonal_frequencies) > 0):
 summed_frequencies = np.zeros(len(all_repB))
 number_of_variants = np.zeros(len(all_repB))
 
-g = open(parent_dir + "_rep2.dat" , 'w')
+g = open(parent_dir + "/publicAndPrivateSomaticVariants_rep2.dat" , 'w')
 
 
 g.write("\t")
@@ -462,12 +467,13 @@ for position in already_printed:
 g.close()
 
 
+'''
 # Plot summed mutation frequency data 
 f = plt.figure(figsize=(6,5))
 fig1 = f.add_subplot(111)
 
 
-out_file = parent_dir + "_rep2_mutational_burden.dat"
+out_file = parent_dir + "/somaticMutationalBurden_rep2.dat"
 with open(out_file , 'w') as file:
 	for var in number_of_variants:
 		file.write("{}\n".format(var))
@@ -489,9 +495,9 @@ plt.setp(fig1.xaxis.get_majorticklabels(), rotation=45 , ha="right")
 
 plt.tight_layout()
 
-out_fig = parent_dir + "_rep2_mutational_burden.png"
+out_fig = parent_dir + "/somaticMutationalBurden_rep2.png" 
 f.savefig(out_fig , dpi = 300 , format='png')
-
+'''
 
 
 
