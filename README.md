@@ -17,7 +17,7 @@ bash SGEclusterSubmit.sh
 ```
 
 
-## Other useful scripts
+# Other useful scripts
 
 The following scripts perform various helpful tasks on the mtDNA somatic variant calls, which are summarised in files ending in "...\_summary.dat" and have the format: variant\_position , frequency (of variant in test minus control) , p-value. A description of each script and how to execute them follows.
 
