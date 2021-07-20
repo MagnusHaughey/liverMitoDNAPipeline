@@ -1,8 +1,8 @@
 # NGS analysis workflow for Passman et al 2021
 
-This repository contains all scripts necessary to implement mtDNA-seq analysis from Passman et al 2021. Input data is available via the European Genome Archive (EGA), accession number ...... 
+This repository contains all scripts necessary to implement mtDNA-seq analysis from Passman et al 2021. Input data is available via the European Genome Archive (EGA), accession number ...... This pipeline implements QC analysis on the input .bam files, and outputs somatic mtDNA variant data.
 
-This analysis was impemented under the Snakemake framework and executed on a HPC using the SGE system. Developed using Snakemake v6.5.3, python v3.8.5, R v3.6.1, FastQC v0.11.9, samtools v1.9. 
+This analysis was impemented under the Snakemake framework and executed on a HPC using the SGE system. Developed using Snakemake v6.5.3, python v3.8.5, R v3.6.1. 
 
 Prior to running the pipeline, file paths in config.yaml must be changed. Execute a "dry run" of the pipeline using the command
 
@@ -65,6 +65,7 @@ where [path] is the file path to directory containing "...scatterPlot.pdf" and "
 python3 shared_and_private_variants.py [path]
 ```
 
-where [path] is the file path to the directory containing "...summary.dat" files. Must have sorted somatic calls using {./sort\_files.sh} prior to executing this script.
+where [path] is the file path to the directory containing "...summary.dat" files. Must have sorted somatic calls using [./sort\_files.sh] prior to executing this script.
+
 
 
