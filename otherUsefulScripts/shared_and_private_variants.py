@@ -46,7 +46,7 @@ def average_double_entries(pairs):
 parent_dir = sys.argv[1]
 
 all_files = []
-for file in glob.glob(parent_dir + "*summary.dat"):		# should be specified up to the patient name, e.g. (/path/GC_EC_8466_193B)
+for file in glob.glob(parent_dir + "/*summary.dat"):		# should be specified up to the patient name, e.g. (/path/GC_EC_8466_193B)
 	all_files.append(file.replace("_summary.dat" , "")[:-4])
 
 
