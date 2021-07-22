@@ -44,7 +44,7 @@ if not isinstance(n_tst_bw, np.float64):
 		# Filter on raw number of calls for each variant
 		if ((n_tst_bw[i] + n_tst_fw[i]) < 10):
 			filtered_out.append(i)
-			if ((n_ctrl_bw[i] + n_ctrl_fw[i]) <= 10):
+			if (( n_ctrl_fw[i] + n_ctrl_bw[i] )/( cov_ctrl_fw[i] + cov_ctrl_bw[i] ) <= 0.01):
 				f.write("Removed somatic mutation {}{}{} due to small number of raw calls\n".format(int(position[i]) , ref_base[i] , var_base[i]))
 			else:
 				f.write("Removed germline mutation {}{}{} due to small number of raw calls\n".format(int(position[i]) , ref_base[i] , var_base[i]))
@@ -55,7 +55,7 @@ elif isinstance(n_tst_bw, np.float64):
 	# Filter on raw number of calls for each variant
 	if ((n_tst_bw + n_tst_fw) < 10):
 		filtered_out.append(0)
-		if ((n_ctrl_bw + n_ctrl_fw) <= 10):
+		if (( n_ctrl_fw[i] + n_ctrl_bw[i] )/( cov_ctrl_fw[i] + cov_ctrl_bw[i] ) <= 0.01):
 			f.write("Removed entry {}{}{} due to small number of raw calls\n".format(int(position) , ref_base , var_base))
 		else:
 			f.write("Removed germline mutation {}{}{} due to small number of raw calls\n".format(int(position) , ref_base , var_base))
