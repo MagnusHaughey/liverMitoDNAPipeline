@@ -1,6 +1,6 @@
 # NGS analysis workflow for Passman et al 2021
 
-This repository contains all scripts necessary to implement mtDNA-seq analysis from Passman et al 2021. Input data is available via the European Genome Archive (EGA), accession number ...... This pipeline implements QC analysis on the input .bam files, and outputs somatic mtDNA variant data summarised in files ending in "...summary.dat".
+This repository contains all scripts necessary to implement mtDNA-seq analysis from Passman et al 2021. Input data is available via the European Genome Archive (EGA), accession number EGAD00001007991. This pipeline implements QC analysis on the input .bam files, and outputs somatic mtDNA variant data summarised in files ending in "...summary.dat".
 
 This analysis was impemented under the Snakemake framework and executed on a HPC using the SGE system. Developed using Snakemake v6.5.3, python v3.8.5, R v3.6.1. 
 
